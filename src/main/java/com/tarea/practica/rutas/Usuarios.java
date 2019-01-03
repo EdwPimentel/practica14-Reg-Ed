@@ -5,7 +5,6 @@ import com.tarea.practica.entidades.Gerente;
 import com.tarea.practica.servicios.CorreoServices;
 import com.tarea.practica.servicios.GerenteServices;
 import com.vaadin.flow.component.button.Button;
-import com.vaadin.flow.component.dialog.Dialog;
 import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.html.H3;
 import com.vaadin.flow.component.icon.Icon;
@@ -16,14 +15,12 @@ import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.data.binder.Binder;
 import com.vaadin.flow.data.provider.DataProvider;
-import com.vaadin.flow.data.renderer.ComponentRenderer;
 import com.vaadin.flow.router.Route;
-
 import com.vaadin.flow.server.VaadinSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
-@Route("opciones")
-public class Opciones extends HorizontalLayout {
+@Route("usuarios")
+public class Usuarios extends HorizontalLayout {
 
     Binder<Gerente> binderGerente;
     Button button;
@@ -43,9 +40,8 @@ public class Opciones extends HorizontalLayout {
 
     Binder<Correo> correoBinder;
 
-    public Opciones(@Autowired GerenteServices gerenteServices, @Autowired CorreoServices correoServices) {
+    public Usuarios(@Autowired GerenteServices gerenteServices) {
         this.gerenteServices = gerenteServices;
-        this.correoServices = correoServices;
 
         correoBinder = new Binder<>();
         binderGerente = new Binder<>();
@@ -66,7 +62,15 @@ public class Opciones extends HorizontalLayout {
             new Notification("Usuario actualizado!").open();
 
         });
+
+
+
+
+        tabla = new Grid<>();
+        tabla.addColumn(Correo::getCorreo).setHeader("Correos");
+
         HorizontalLayout verticalLayout = new HorizontalLayout();
+        VerticalLayout verticalLayout1 = new VerticalLayout(new H3("Nuevo usuario"), new HorizontalLayout(tabla));
 
         nombre = new TextField("Nombre");
         apellido = new TextField("Apellido");
@@ -80,17 +84,15 @@ public class Opciones extends HorizontalLayout {
 //        horizontalLayout1.setSizeFull();
 
         cargarDatos();
-        add(menu, verticalLayout);
-
+        add(menu);
+        add(verticalLayout1);
 //        add(verticalLayout);
 
     }
 
     public void cargarDatos() {
 
-        nombre.setValue(gerente.getNombre());
-        apellido.setValue(gerente.getApellido());
-        correoTextfield.setValue(gerente.getCorreos());
+
 
     }
 
