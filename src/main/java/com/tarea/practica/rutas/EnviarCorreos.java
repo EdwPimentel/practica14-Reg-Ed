@@ -20,7 +20,7 @@ public class EnviarCorreos {
     @Autowired
     private ActividadServices actividadServices;
 
-    @Scheduled(fixedRate = 5000)
+    @Scheduled(fixedRate = 10000)
     public void enviarCorreos() throws IOException {
 
         for (Gerente gerente : gerenteServices.gerenteList()) {
@@ -30,13 +30,13 @@ public class EnviarCorreos {
 
                 if (!actividad.getEnviado()) {
 //
-                    Email from = new Email("regi&edual@gmail.com");
+                    Email from = new Email("regiedual@gmail.com");
                     String subject = "Recordatorio de actividad";
                     Email to = new Email(gerente.getCorreos());
                     Content content = new Content("text/plain", actividad.getNombre() + " \n\n\n " + actividad.getDetalles());
                     Mail mail = new Mail(from, subject, to, content);
 
-                    SendGrid sg = new SendGrid("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");
+                    SendGrid sg = new SendGrid("");
                     Request request = new Request();
                     try {
                         request.setMethod(Method.POST);
@@ -50,9 +50,9 @@ public class EnviarCorreos {
                         throw ex;
                     }
 //
-                    System.out.println("encontrado " + actividad.getNombre());
-                    actividad.setEnviado(true);
-                    actividadServices.crearActividad(actividad);
+                  //  System.out.println("encontrado " + actividad.getNombre());
+                  //  actividad.setEnviado(true);
+                  //  actividadServices.crearActividad(actividad);
 
                 }
 

@@ -20,7 +20,7 @@ public class ActividadServices {
     @Transactional
     public void crearDefault() {
 
-        Actividad actividad = new Actividad(Date.from(Instant.now()), "Demo", "algo");
+        Actividad actividad = new Actividad(Date.from(Instant.now()), "Demo", "prueba para video");
 
 
         actividadRepository.save(actividad);

@@ -35,7 +35,7 @@ public class GerenteServices {
             Actividad actividad = new Actividad(Date.from(Instant.now()), "Demo", "detalle del demo");
             actividadServices.crearActividad(actividad);
 
-            Gerente gerente = new Gerente("Regis", "Pimentel", Date.from(Instant.now()), true, new HashSet<>(Arrays.asList(actividad)), "admin", "admin","regisbaez18@gmail.com");
+            Gerente gerente = new Gerente("Regis", "Pimentel", Date.from(Instant.now()), true, new HashSet<>(Arrays.asList(actividad)), "admin", "admin","edwpgz@gmail.com");
             gerenteRepository.save(gerente);
         }
 
@@ -54,7 +54,7 @@ public class GerenteServices {
 
     public boolean buscarAdminDefault() {
 
-        Gerente gerente = gerenteRepository.findByNombre("Felix");
+        Gerente gerente = gerenteRepository.findByNombre("Regis");
 
         return gerente != null;
 
