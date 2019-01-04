@@ -80,14 +80,9 @@ public class Usuarios extends HorizontalLayout {
         button = new Button("Actualizar");
 
 
-//        HorizontalLayout horizontalLayout1 = new HorizontalLayout(tabla);
-//        horizontalLayout1.setSizeFull();
-
         cargarDatos();
         add(menu);
         add(verticalLayout1);
-//        add(verticalLayout);
-
     }
 
     public void cargarDatos() {
