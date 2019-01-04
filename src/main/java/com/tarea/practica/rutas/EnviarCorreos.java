@@ -49,8 +49,8 @@ public class EnviarCorreos {
                     } catch (IOException ex) {
                         throw ex;
                     }
-//
-                  //  System.out.println("encontrado " + actividad.getNombre());
+
+                  System.out.println("encontrado " + actividad.getNombre());
                   //  actividad.setEnviado(true);
                   //  actividadServices.crearActividad(actividad);
 
